@@ -50,7 +50,7 @@ class SearchJobController extends Controller
         $appPath = explode("/",$appPath);
         array_pop($appPath);
 
-        $dataPath = implode("/", $appPath). "/data.tsv";
+        $dataPath = implode("/", $appPath). "/data.txt";
 
         // Insertion de chaque ligne du fichier data dans un tableau
         $dataInArray = array();
@@ -61,31 +61,29 @@ class SearchJobController extends Controller
             $dataInArray[] = $line;
         }
         fclose($inputcsv);
-
-
+        array_pop($dataInArray);
         $arrayData = array();
+        $arrayData2 = array();
 
         // Traitement de chaque ligne du tableau pour séparer l'utilisateur et la grille
+        $i=0;
         foreach ($dataInArray as $row) {
 
             $arrayRow = preg_split('/\s+/', $row);
-
+            $i++;
             array_pop($arrayRow);
-            if ($arrayRow) {
-                $key = $arrayRow[0];
-                $value = $arrayRow[1];
-                $arrayData[$key] = $value;
-            }
-        }
 
-        var_dump($arrayData);
+            $arrayData[] = $arrayRow[0];
+            $arrayData2[] = $arrayRow[1];
+
+        }
         $em = $this->getDoctrine()->getManager();
 
         // Insertion des données dans la bdd
-        foreach ($arrayData as $key => $value){
+        for($i = 0; $i < count($arrayData); $i++){
             $grid = new IntAns();
-            $grid->setInterviewId($key);
-            $grid->setAnswerId($value);
+            $grid->setInterviewId(intval($arrayData[$i]));
+            $grid->setAnswerId(intval(trim($arrayData2[$i])));
             $em->persist($grid);
             unset($grid);
         }

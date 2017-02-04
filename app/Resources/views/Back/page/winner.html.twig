@@ -1,17 +1,12 @@
-{% extends "::base.html.twig" %}
+{% extends ":Back:layout.html.twig" %}
 
 
-{% block body %}
+{% block main %}
     <div class="container winner">
 
         <h2>Bravo {{  winner.firstname }} {{ winner.lastname }} !</h2>
         <p>Tu as été tiré au sort et tu remportes un smartphone!</p>
         <p>{{ winner.email }}</p>
-
-        <div>
-            <a href="{{ path("admin") }}" class="btn">Retour à la page d'administration</a>
-        </div>
-
         <br>
 
     </div>

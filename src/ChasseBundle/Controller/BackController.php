@@ -43,7 +43,7 @@ class BackController extends Controller
         $words = $this->getDoctrine()->getRepository('ChasseBundle:Answer')->mostUsed();
 
 
-        return $this->render('Back/stats.html.twig', array(
+        return $this->render('Back/page/stats.html.twig', array(
             "totalusers"    =>      $users,
             "activeusers"   =>      $activeUsers,
             "nbjobs"        =>      $nbjobs,
@@ -87,7 +87,7 @@ class BackController extends Controller
         //classment of most registered departments
         $departments = $this->getDoctrine()->getRepository('ChasseBundle:User')->getMostRegDepartment();
 
-        return $this->render('Back/userstats.html.twig', array(
+        return $this->render('Back/page/userstats.html.twig', array(
             "genders" => $genders,
             "statuses" => $statuses,
             "agecategory" => $agecategory,
@@ -137,7 +137,7 @@ class BackController extends Controller
         $winner = $selectedPersons[$randArrayInt];
 
 
-        return $this->render('Back/winner.html.twig', array(
+        return $this->render('Back/page/winner.html.twig', array(
             "winner"          =>    $winner,
         ));
     }

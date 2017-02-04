@@ -90,6 +90,7 @@ fos_user:
 
 # Easy Admin
 easy_admin:
+    site_name: '#Tag ton métier'
     entities:
         User:
             class: ChasseBundle\Entity\User

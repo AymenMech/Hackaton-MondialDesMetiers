@@ -14,3 +14,8 @@ chasse_back:
 search_job:
     path:     /trouvetonjob
     defaults: { _controller: ChasseBundle:SearchJob:search }
+
+
+get_data:
+    path:     /trouvetonjobdata
+    defaults: { _controller: ChasseBundle:SearchJob:data }

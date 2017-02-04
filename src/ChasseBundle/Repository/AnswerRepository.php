@@ -49,7 +49,7 @@ class AnswerRepository extends EntityRepository
 
     }
 
-    public function getbysearch()
+    /*public function searchJobs()
     {
         //$tag = $tagsId[0];
         $query = $this->createQueryBuilder('a')
@@ -68,6 +68,21 @@ class AnswerRepository extends EntityRepository
 
         //echo $query->getSQL();die();
         return $query->getResult();
+
+    }*/
+
+    public function rahhhh($data, $data1)
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->select('a')
+
+            ->where('a.id = ?1')
+            //->groupBy('i.id')
+            ->setParameter( 1, $data)
+
+            ->getQuery();
+
+        return $qb->getResult();
     }
 }
 

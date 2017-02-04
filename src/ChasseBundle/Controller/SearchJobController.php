@@ -32,8 +32,7 @@ class SearchJobController extends Controller
           foreach($data as $tag){
               $tagsId[] = $tag->getId();
           }
-       //   var_dump($tagsId);
-          //  $em = $this->getDoctrine()->getRepository('SearchRepository');
+        $em = $this->getDoctrine()->getRepository('SearchRepository');
            // return $this->redirectToRoute('votevalid');
 
         }

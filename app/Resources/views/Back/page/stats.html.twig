@@ -6,35 +6,35 @@
     <h1 class="back-title">Statistiques d'utilisation de l'application</h1>
     <br>
     <div class="statistic-card">
-        <div class="stat-cards col-xs-2 col-xs-offset-1">
+        <div class="stat-cards col-xs-4 col-sm-2 col-sm-offset-1">
             <div class="col-xs-12"><p><span><b>{{ totalusers }}</b></span></p></div>
             <div class="col-xs-12 text-back"><p><small>Nombre d'utilisateurs enregistrés</small></p></div>
         </div>
 
-        <div class="stat-cards col-xs-2">
+        <div class="stat-cards col-xs-4 col-sm-2">
             <div class="col-xs-12"><p><span><b>{{ activeusers }}</b></span></p></div>
             <div class="col-xs-12 text-back"><p><small>Nombre d' utilisateurs actifs</small></p></div>
         </div>
 
-        <div class="stat-cards col-xs-2">
+        <div class="stat-cards col-xs-4 col-sm-2">
             <div class="col-xs-12"><p><span><b>{{ eligibleuser }}</b></span></p></div>
             <div class="col-xs-12 text-back"><p><small>Nombre d'utilisateurs pouvant participer au tirage au sort</small></p></div>
         </div>
 
-        <div class="stat-cards col-xs-2">
+        <div class="stat-cards col-xs-4 col-sm-2">
             <div class="col-xs-12"><span><b>{{ nbjobs }}</b></span><p></div>
             <div class="col-xs-12 text-back"><p><small>Nombre de métiers ayant reçus des réponses</small></p></div>
         </div>
 
-        <div class="stat-cards col-xs-2">
+        <div class="stat-cards col-xs-4 col-sm-2">
             <div class="col-xs-12"><p><span><b>{{ nbdomains }}</b></span></p></div>
             <div class="col-xs-12 text-back"><p><small>Nombre de domaines ayant reçus des réponses</small></p></div>
         </div>
     </div>
 
 
-    <br>
-    <div>
+
+    <div class="col-xs-12">
         <h2>Classement des 20 métiers les plus répondus</h2>
         <table class="table table-striped">
             <thead>
@@ -54,7 +54,7 @@
 
     <br>
 
-    <div>
+    <div class="col-xs-12">
         <h2> Classement des 20 domaines les plus répondus</h2>
         <table class="table table-striped">
             <thead>
@@ -73,7 +73,8 @@
     </div>
 
     <br>
-    <div><h2> Classement des 20 mots les plus utilisés</h2>
+    <div class="col-xs-12">
+    <h2> Classement des 20 mots les plus utilisés</h2>
         <table class="table table-striped">
             <thead>
             <tr>
@@ -90,4 +91,35 @@
         </table>
     </div>
 
+    <canvas id="myChart"></canvas>
+
+    <script>
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                        "Nombre d'utilisateurs enregistrés",
+                        "Nombre d' utilisateurs actifs",
+                        "Nombre d'utilisateurs pouvant participer au tirage au sort",
+                        "Nombre de métiers ayant reçus des réponses",
+                        "Nombre de domaines ayant reçus des réponses"
+                ],
+                datasets: [{
+                    backgroundColor: [
+                        "#2ecc71",
+                        "#3498db",
+                        "#95a5a6",
+                        "#9b59b6",
+                        "#f1c40f"
+                    ],
+                    data: [{{ totalusers }}, {{ activeusers }}, {{ eligibleuser }}, {{ nbjobs }}, {{ nbdomains }}]
+                }]
+            }
+        });
+    </script>
+
+
 {% endblock %}
+
+  {% block body_javascripts %}{% endblock %}

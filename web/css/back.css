@@ -16,6 +16,7 @@ td {
 
 .back-title {
     font-weight: 900;
+    text-align: center;
 }
 
 .back-hr {
@@ -66,9 +67,12 @@ td {
 
 .statistic-card {
     text-align: center;
+    margin-bottom: 110px;
 }
 .statistic-card span {
     font-size: 50px;
 }
 
-.statistic-card span
+.text-back {
+    font-size: 12px;
+}

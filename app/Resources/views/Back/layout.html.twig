@@ -129,11 +129,11 @@
         </div>
 
         {% block body_javascript %}
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
         {% endblock body_javascript %}
 
         {% for js_asset in easyadmin_config('design.assets.js') %}
-            <script src="{{ asset(js_asset) }}"></script>
+            <script src="{{ asset(js_a) }}"></script>
         {% endfor %}
     </body>
     {% endblock body %}

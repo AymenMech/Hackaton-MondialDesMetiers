@@ -101,4 +101,17 @@ class InterviewRepository extends EntityRepository
         return $qb->getScalarResult();
     }
 
+    /*public function getbysearch()
+    {
+        $qb = $this->createQueryBuilder('i')
+            ->join('i.answer', 'a')
+            ->join('i.job', 'j')
+            ->where('i.id = a.id')
+            ->andWhere('i.job_id = j.id');
+            //->getQuery();
+
+        echo $qb->getQuery()->getSQL();die;
+        //return $qb->getResult();
+    }*/
+
 }

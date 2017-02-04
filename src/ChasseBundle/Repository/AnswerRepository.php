@@ -49,19 +49,25 @@ class AnswerRepository extends EntityRepository
 
     }
 
-    public function searchJobs()
+    public function getbysearch()
     {
+        //$tag = $tagsId[0];
         $query = $this->createQueryBuilder('a')
-            ->select('a.id')
-            ->innerJoin('a.interviews', 'i')
-            ->where('a.id = i.id')
-            ->getQuery();
+            ->select('a')
+            ->innerJoin('a.interviews', 'i');
+
+            $module = $query->expr()->andX();
+            $module->add($query->select('job'));
+            $module->add($query->from('job', 'j'));
+            $module->add($query->leftJoin('j.interview', 'i'));
+            $module->add($query->expr()->eq('j.id', 'i.'))
+
+
+            //->getQuery();
+
 
         //echo $query->getSQL();die();
         return $query->getResult();
-
-
-
     }
 }
 

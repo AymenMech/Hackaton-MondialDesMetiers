@@ -17,27 +17,36 @@ use ChasseBundle\Entity\User;
 
 class SearchJobController extends Controller
 {
-    public function searchAction(Request $request)
+    public function searchAction(Request $request, $result)
     {
         /* Get user logged and job chosen before */
         /* Generate form and set data for user and job */
         $form = $this->createForm('ChasseBundle\Form\SearchJobType');
         $form->handleRequest($request);
 
+        $em = $this->getDoctrine()->getManager();
+
         if ($form->isSubmitted() && $form->isValid()) {
           $data =  $form->getData()['answers'];
-
-          foreach($data as $tag){
-
-          }
-
-
-          //  $em = $this->getDoctrine()->getRepository('SearchRepository');
-           // return $this->redirectToRoute('votevalid');
+            $tagsId = array();
+              foreach($data as $tag){
+                  $tagsId[] = $tag->getId();
+              }
+          //var_dump($tagsId);
+            /**
+             * @var $repository $InterviewRepository
+             */
+            $result = $em->getRepository('ChasseBundle:Interview')->getbysearch();
+            //var_dump($result);
+            return $this->render('interview/searchjob.html.twig', array(
+                'result' => $result,
+                'form' => $form->createView()
+            ));
         }
 
         return $this->render('interview/searchjob.html.twig', array(
             'form' => $form->createView(),
+            'result' => $result
         ));
     }
 

@@ -3,36 +3,36 @@
 
 {% block main %}
     <div class="container">
-    <h1>Statistiques d'utilisation de l'application</h1>
+    <h1 class="back-title">Statistiques d'utilisation de l'application</h1>
+    <br>
+    <div class="statistic-card">
+        <div class="col-xs-2 col-xs-offset-1">
+            <p><span><b>{{ totalusers }}</b></span><br><small>Nombre d'utilisateurs enregistrés</small></p>
+        </div>
+
+        <div class="col-xs-2">
+            <p><span><b>{{ activeusers }}</b></span><br><small>Nombre d' utilisateurs actifs</small></p>
+        </div>
+
+        <div class="col-xs-2">
+            <p><span><b>{{ eligibleuser }}</b></span><br><small>Nombre d'utilisateur pouvant participer au tirage au sort</small>
+                </p>
+        </div>
+
+        <div class="col-xs-2">
+            <p><span><b>{{ nbjobs }}</b></span><br><small>Nombre de métiers ayant reçus des réponses</small></p>
+        </div>
+
+        <div class="col-xs-2">
+            <p><span><b>{{ nbdomains }}</b></span><br><small>Nombre de domaines ayant reçus des réponses</small></p>
+        </div>
+    </div>
+
 
     <br>
-
-    <div>
-        Nombre d'utilisateurs enregistrés : <b> {{ totalusers }} </b>
-    </div>
-
-
-    <div>
-        Nombre d' utilisateurs actifs : <b>{{ activeusers }} </b>
-    </div>
-
-    <div>
-        Nombre d'utilisateur pouvant participer au tirage au sort : <b>{{ eligibleuser }} </b>
-    </div>
-
-    <div>
-        Nombre de métiers ayant reçus des réponses : <b>{{ nbjobs }} </b>
-    </div>
-
-    <div>
-        Nombre de domaines ayant reçus des réponses : <b>{{ nbdomains }} </b>
-    </div>
-
-    <br>
-
     <div>
         <h2>Classement des 20 métiers les plus répondus</h2>
-        <table class="table bordered striped table-bordered">
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th>Métier</th>
@@ -52,7 +52,7 @@
 
     <div>
         <h2> Classement des 20 domaines les plus répondus</h2>
-        <table class="table bordered striped table-bordered">
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th>Domaine</th>
@@ -70,7 +70,7 @@
 
     <br>
     <div><h2> Classement des 20 mots les plus utilisés</h2>
-        <table class="table bordered striped table-bordered">
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th>Mot</th>

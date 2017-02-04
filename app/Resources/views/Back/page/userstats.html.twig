@@ -2,8 +2,8 @@
 
 
 {% block main %}
-    <div class="container userstats">
-        <h1>Statistiques des personnes inscrites</h1>
+    <div class="container">
+        <h1 class="back-title">Statistiques des personnes inscrites</h1>
 
         <br>
 
@@ -13,7 +13,8 @@
 
         <br>
         <h2> Nombre d'hommes et de femmes </h2>
-        <table class="table bordered striped table-bordered centered">
+        <hr class="back-hr">
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th>Genre</th>
@@ -34,7 +35,8 @@
         <br>
 
         <h2> Liste des statuts les plus enregistrés </h2>
-        <table class="table bordered striped table-bordered centered">
+        <hr class="back-hr">
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th>Statut</th>
@@ -54,7 +56,8 @@
         <br>
 
         <h2> Liste des départements les plus enregistrés </h2>
-        <table class="table bordered striped table-bordered centered">
+        <hr class="back-hr">
+        <table class="table table-striped">
             <thead>
             <tr>
             <th>Département</th>
@@ -74,7 +77,8 @@
         <br>
 
         <h2> Liste des catégories d'âge </h2>
-        <table class="table bordered striped table-bordered centered">
+        <hr class="back-hr">
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th>Catégorie d'âge</th>
@@ -94,9 +98,10 @@
         <br>
 
         <h2> Liste des inscrits à la newsletter </h2>
+        <hr class="back-hr">
         <br>
-        <a class="btn" href="{{ path('export') }}">télécharger la liste des inscrits</a>
-        <table class="table bordered striped table-bordered ">
+        <a class="button-back" href="{{ path('export') }}">Télécharger la liste des inscrits</a>
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th>Prénom</th>

@@ -1,0 +1,31 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="row">
+    <div class="col s10 offset-s1 offset-m2 m8 offset-l3 l6">
+        <h1 class="center-align">Inscription</h1>
+
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+        {{ form_row(form.firstname, {label:'Prénom'}) }}
+        {{ form_row(form.lastname, {label:'Nom'}) }}
+        {{ form_row(form.username, {label:'Nom d\'utilisateur'}) }}
+        {{ form_row(form.email, {label:'Email :'}) }}
+        {{ form_row(form.username, {label:'Prénom Nom :'}) }}
+        {{ form_row(form.plainPassword.first, {label:'Mot de passe :'}) }}
+        {{ form_row(form.plainPassword.second, {label:'Confirmation mot de passe :'}) }}
+        {{ form_row(form.gender, {label:'Je suis :'}) }}
+        {{ form_row(form.age) }}
+        {{ form_row(form.status, {label:'Statut :'}) }}
+        {{ form_row(form.department, {label:'Département :'}) }}
+        {{ form_row(form.newsletter, {label:'Recevoir la newsletter :'}) }}
+        <div class="bloc_sp_xs"></div>
+
+
+
+        {{ form_widget(form) }}
+        <div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">{{ 'registration.submit'|trans }}</button>
+        </div>
+        {{ form_end(form) }}
+        <div class="bloc_sp_s"></div>
+    </div>
+</div>

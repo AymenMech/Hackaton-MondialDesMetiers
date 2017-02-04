@@ -1,0 +1,9 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+    <div class="row">
+        <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
+            {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+        </div>
+    </div>
+{% endblock fos_user_content %}

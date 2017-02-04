@@ -1,0 +1,23 @@
+index:
+    path:     /
+    defaults: { _controller: ChasseBundle:Security:login }
+
+howto:
+    path:     /regles-du-jeu
+    defaults: { _controller: ChasseBundle:Front:howto }
+
+legalmention:
+    path:     /mentions-legales
+    defaults: { _controller: ChasseBundle:Front:legalmention }
+
+countdown:
+    path:     /ouverture-proche
+    defaults: { _controller: ChasseBundle:Front:countDown }
+
+learnmore:
+    path:     /en-savoir-plus
+    defaults: { _controller: ChasseBundle:Front:learnmore }
+
+finished:
+    path:     /evenement-terminé
+    defaults: { _controller: ChasseBundle:Front:finished }

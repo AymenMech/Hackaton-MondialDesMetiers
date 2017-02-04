@@ -1,0 +1,28 @@
+ChasseBundle\Entity\Answer:
+    type: entity
+    table: null
+    repositoryClass: ChasseBundle\Repository\AnswerRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        word:
+            type: string
+            length: 255
+        domain:
+            type: string
+            length: 255
+    indexes:
+        a_dom:
+            columns: ['domain']
+        a_word:
+            columns: ['word']
+
+    manyToMany:
+        interviews:
+          targetEntity: Interview
+          mappedBy: answers
+    lifecycleCallbacks: {  }

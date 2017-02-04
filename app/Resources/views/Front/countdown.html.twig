@@ -1,0 +1,36 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Préinscris toi! - Tag ton métier{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div id="countContent">
+            <div id="countdown"></div>
+            <div id="countRegistration">
+                <h1>Joue à Tag ton métier<br/><small>et tente de gagner un smartphone!</small></h1>
+            </div>
+        </div>
+        <div class="center-align count_btns">
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <p>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</p>
+                <a class="waves-effect waves-light btn" href="{{ path('learnmore') }}">En savoir plus</a>
+                <br>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="waves-effect waves-light btn" href="{{ path('admin') }}">Panneau d'administration</a>
+                    <br>
+                {% endif %}
+                <a class="btn waves-effect waves-light inscriptbtn" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+            {% else %}
+                <a class="waves-effect waves-light btn" href="{{ path('learnmore') }}">En savoir plus</a>
+                <br>
+                <a class="waves-effect waves-light btn" href="{{ path('fos_user_registration_register') }}">Préinscris-toi</a>
+            {% endif %}
+        </div>
+    </div>
+
+
+{% endblock %}
+
+  {% block javascripts %}
+      <script type="text/javascript" src="{{ asset ('js/countdown.js') }}"></script>
+  {% endblock %}

@@ -1,0 +1,93 @@
+{% extends "::base.html.twig" %}
+
+
+{% block body %}
+    <div class="container">
+    <h1>Statistiques d'utilisation de l'application</h1>
+
+    <div class="center">
+        <a href="{{ path("admin") }}" class="btn">Retour à la page d'administration</a>
+    </div>
+
+    <br>
+
+    <div>
+        Nombre d'utilisateurs enregistrés : <b> {{ totalusers }} </b>
+    </div>
+
+
+    <div>
+        Nombre d' utilisateurs actifs : <b>{{ activeusers }} </b>
+    </div>
+
+    <div>
+        Nombre d'utilisateur pouvant participer au tirage au sort : <b>{{ eligibleuser }} </b>
+    </div>
+
+    <div>
+        Nombre de métiers ayant reçus des réponses : <b>{{ nbjobs }} </b>
+    </div>
+
+    <div>
+        Nombre de domaines ayant reçus des réponses : <b>{{ nbdomains }} </b>
+    </div>
+
+    <br>
+
+    <div>
+        <h2>Classement des 20 métiers les plus répondus</h2>
+        <table class="table bordered striped table-bordered">
+            <thead>
+            <tr>
+                <th>Métier</th>
+                <th>Nombre de réponses</th>
+            </tr>
+            </thead>
+            {% for job in mostAnsweredJobs %}
+                <tr>
+                    <td>{{ job.name }}</td>
+                    <td>{{ job.total }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <br>
+
+    <div>
+        <h2> Classement des 20 domaines les plus répondus</h2>
+        <table class="table bordered striped table-bordered">
+            <thead>
+            <tr>
+                <th>Domaine</th>
+                <th>Nombre de réponses</th>
+            </tr>
+            </thead>
+            {% for domain in mostAnsweredDomains %}
+                <tr>
+                    <td>{{ domain.domain }}</td>
+                    <td>{{ domain.total }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <br>
+    <div><h2> Classement des 20 mots les plus utilisés</h2>
+        <table class="table bordered striped table-bordered">
+            <thead>
+            <tr>
+                <th>Mot</th>
+                <th>Nombre</th>
+            </tr>
+            </thead>
+            {% for word in words %}
+                <tr>
+                    <td>{{ word.word }}</td>
+                    <td>{{ word.nb }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

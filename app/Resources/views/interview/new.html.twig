@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tag tes mots - Tag ton métier{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
+                <h1>Tes mots-clés</h1>
+                <h2><small>{{ jobname }}</small></h2>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col s12 offset-m2 m8 offset-l3 l6" id="chipchosen"></div>
+
+            <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
+                <label for="inputword" >Choisis tes mots-clés:</label><button id="noidea" class="btn btn-small">Pas d'idée ?</button>
+
+                    <a id="help-me"><i class="material-icons" data-target="modal1">live_help</i></a>
+
+                <!-- Modal Structure -->
+                <div id="modal1" class="modal bottom-sheet">
+                    <div class="modal-content">
+                        <h3>Informations:</h3>
+                        <p class="infobox">Saisis les trois premières lettres d'un mot pour faire apparaitre les suggestions de tags. Ton mot n'y est pas? Saisis-le en mot libre.</p>
+                            <p>Sur certains téléphones, il peut être nécessaire d'appuyer sur la touche "entrée" de ton clavier pour que les propositions apparaissent.</p>
+                    </div>
+                </div>
+
+                <input type="text" name="" id="inputword" maxlength="255">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 offset-m2 m8 offset-l3 l6" id="wordautocomp"></div>
+        </div>
+
+        <div class="row">
+            <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6" id="nbresponse"></div>
+        </div>
+
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
+                {{ form_errors(form.answers) }}
+                {{ form_row(form.bonusWord, {label:'Saisis ton mot libre :'})}}
+            </div>
+        </div>
+        <div class="bloc_sp_xs"></div>
+        <div id="checkboxfield">
+            {{ form_row(form.answers, {label:none, 'attr': {'class': 'hidden-row'}})}}
+            {{ form_widget(form) }}
+        </div>
+        <div class="row">
+            <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
+                <input class="btn jevote" type="submit" value="Tag ton métier">
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+    <div class="bloc_sp_s"></div>
+{% endblock %}
+
+{% block javascripts %}
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <!-- Main script -->
+    <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/autocomplete.js') }}"></script>
+
+    <!-- Materialize -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+{% endblock %}

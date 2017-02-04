@@ -1,0 +1,8 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="fos_user_user_show">
+    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    <a class="waves-effect waves-light btn tag_btn" href="{{ path('fos_user_profile_edit') }}">Modifier mon profil</a>
+    <a class="waves-effect waves-light btn tag_btn" href="{{ path('index') }}">Retour à l'accueil</a>
+</div>

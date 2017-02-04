@@ -1,0 +1,56 @@
+ChasseBundle\Entity\User:
+    type:  entity
+    table: user
+    repositoryClass: ChasseBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        firstname:
+            type: string
+            length: 35
+        lastname:
+            type: string
+            length: 35
+        gender:
+            type: string
+            length: 10
+        status:
+            type: string
+            length: 100
+        age:
+            type: smallint
+        department:
+            type: smallint
+        newsletter:
+            type: boolean
+        satisfaction:
+            type: smallint
+            nullable: true
+        comment:
+            type: text
+            nullable: true
+    indexes:
+        u_news:
+            columns: ['newsletter']
+        u_usrn:
+            columns: ['username']
+            type: unique
+        u_usrn_c:
+            columns: ['username_canonical']
+            type: unique
+        u_email_c:
+            columns: ['email_canonical']
+            type: unique
+        u_email:
+            columns: ['email']
+            type: unique
+
+
+    oneToMany:
+        interviews:
+          targetEntity: Interview
+          mappedBy: user

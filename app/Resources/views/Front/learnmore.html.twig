@@ -1,0 +1,65 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}En savoir plus - Tag ton métier{% endblock %}
+
+{% block body %}
+
+    <div class="container" id="learnmore">
+        <div class="row">
+            <div class="col s10 offset-s1" id="index">
+                <h1>TAG TON METIER !</h1>
+
+                <p>Une nouvelle application web de connaissance des métiers !</p>
+
+                <p class="content_title">Le principe : attribue de 1 à 6 hashtags ou mots-clés par métier visité.</p>
+                <p>Pour t’aider tu disposes d’une liste de mots-clés. Pour chaque métier visité, tu pourras attribuer de 1 à 5 mots-clés choisis dans cette liste + 1 mot-clé de ton choix.</p>
+
+                <p class="content_title">Quel type de mots-clés faut-il renseigner ?</p>
+                <p>Après t’être informé.e sur un métier, donne spontanément les mots qui te viennent à l’esprit ! Les mots-clés peuvent correspondre par exemple à l’univers du métier (où s’exerce le métier ? avec qui ? pour qui ? avec quel outil, matériau, machine ou technologie l’exerce-t- on ?) ou bien aux qualités techniques ou humaines (« soft skills ») nécessaires pour l’exercer.</p>
+
+                <p class="content_title">A partir de 3 métiers renseignés, tu es automatiquement sélectionné.e pour participer au tirage au sort qui te fera peut-être gagner un smartphone !</p>
+
+                <p class="content_title">A quoi ça sert ?</p>
+
+                <p><span>Pour toi :</span> c’est un outil pour éveiller ta curiosité sur les métiers. En recherchant des informations sous un autre angle (Quel est l’univers de ce métier ? Quelles sont les compétences pour l’exercer ?),
+                    tu auras peut-être le déclic pour ton futur métier !<br/><br/>
+                    <span>Pour toi mais pas que !</span> Les mots-clés attribués par les participants de « Tag ton métier » seront
+                    ensuite analysés et triés pour obtenir un moteur de recherche qui permettra aux futurs visiteurs de trouver des métiers à partir d’un mot-clé. Ce moteur de recherche sera intégré par la suite au moteur
+                    de recherche du site du Mondial des Métiers. C’est une contribution collaborative pour aider les futurs visiteurs à trouver leur métier !</p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col offset-s4 s4 offset-m1 m2" id="index_hack">
+                <img  class="responsive-img" src="{{ asset('img/Hackathon.jpg')}}" alt="hackathon">
+            </div>
+            <div class="col offset-s1 s10 m8">
+                <p>Ce travail sur les bases de données et la création d’un moteur de recherche sera réalisé en direct du Mondial des Métiers pendant un <span>hackathon</span> (marathon du
+                    codage) samedi 4 et dimanche 5 février 2017 !<br/><br/>
+                    Rendez-vous dimanche 5 février à 15h sur l’espace hackathon, stand D18, pour découvrir les solutions imaginées par les apprentis codeurs !</p>
+            </div>
+            <div class="col offset-s1 s10 offset-m3 m8 index_howto"><a href="{{ path('howto') }}">Voir le règlement du jeu</a></div>
+        </div>
+
+        <div class="row" id="index_wcs">
+            <div class="col offset-s4 s4 offset-m1 m2" id="wcs_logo">
+                <img  class="responsive-img" src="{{ asset('img/logowild.png')}}" alt="AROM">
+            </div>
+            <div class="col offset-s1 s10 m6">
+                <p>L’application web « Tag ton métier » a été développée par les élèves de la Wild Code School de Lyon en partenariat avec l’AROM, association régionale pour l’orientation et la promotion des métiers, organisatrice du Mondial des Métiers Auvergne-Rhône- Alpes.</p>
+            </div>
+            <div class="col offset-s4 s4 m2" id="index_arom">
+                <img  class="responsive-img" src="{{ asset('img/LogoAROM.jpg')}}" alt="AROM">
+            </div>
+        </div>
+
+        <div class="center-align">
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <a class="waves-effect waves-light btn" href="{{ path('job_select') }}">Taguer un métier</a>
+            {% else %}
+            <a class="waves-effect waves-light btn" href="{{ path('fos_user_registration_register') }}">Je m'inscris</a>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

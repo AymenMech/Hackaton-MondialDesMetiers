@@ -1,0 +1,60 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="row">
+    <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
+        {% if error %}
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+    </div>
+</div>
+
+
+<h1 class="center-align">Joue à Tag ton métier<br><small> et tente de gagner un smartphone !</h1>
+<div class="row" id="login_form">
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6 center-align">
+            <p>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</p>
+
+            <a class="btn waves-effect waves-light inscriptbtn" href="{{ path('job_select') }}">Taguer un métier</a>
+            <br>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="waves-effect waves-light btn inscriptbtn" href="{{ path('admin') }}">Panneau d'administration</a>
+                <br>
+            {% endif %}
+            <a class="btn waves-effect waves-light inscriptbtn" href="{{ path('fos_user_profile_show') }}">Mon profil</a>
+            <br>
+            <a class="btn waves-effect waves-light inscriptbtn" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+            <br>
+        </div>
+    {% else %}
+        <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
+
+            <form action="{{ path("fos_user_security_check") }}" method="post">
+                {% if csrf_token %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                {% endif %}
+                <label for="username">{{ 'security.login.username'|trans }}</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+                <label for="password">{{ 'security.login.password'|trans }}</label>
+                <input type="password" id="password" name="_password" required="required" />
+
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+                <div class="login_checkbox col-xs-12">
+                    <a  href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>
+                </div>
+
+
+                <br>
+                <div class="center-align">
+                    <button class="btn waves-effect waves-light inscriptbtn" id="_submit" type="submit" name="_submit">{{ 'security.login.submit'|trans }}</button>
+                    <a class="btn waves-effect waves-light inscriptbtn" id="countRegisterButton" href="{{ path('fos_user_registration_register') }}">PAS ENCORE INSCRIT ?</a>
+                </div>
+            </form>
+        </div>
+
+    {% endif %}
+</div>

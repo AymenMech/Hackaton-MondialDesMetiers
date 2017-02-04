@@ -1,0 +1,12 @@
+chasse_interview:
+    resource: "@ChasseBundle/Resources/config/routing/interview.yml"
+    prefix:   /interview
+
+
+chasse_front:
+    resource: "@ChasseBundle/Resources/config/routing/front.yml"
+    prefix:   /
+
+chasse_back:
+    resource: "@ChasseBundle/Resources/config/routing/back.yml"
+    prefix:   /back

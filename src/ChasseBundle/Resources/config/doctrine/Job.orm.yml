@@ -1,0 +1,30 @@
+ChasseBundle\Entity\Job:
+    type: entity
+    table: null
+    repositoryClass: ChasseBundle\Repository\JobRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        domain:
+            type: string
+            length: 255
+    indexes:
+        j_dom:
+            columns: ['domain']
+        j_name:
+            columns: ['name']
+            sorting: 'ASC'
+
+    oneToMany:
+        interviews:
+          targetEntity: Interview
+          mappedBy: job
+
+    lifecycleCallbacks: {  }

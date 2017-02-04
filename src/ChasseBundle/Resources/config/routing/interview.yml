@@ -1,0 +1,33 @@
+interview_new:
+    path:     /new/{job}
+    defaults: { _controller: "ChasseBundle:Interview:new" }
+    methods:  [GET, POST]
+
+job_choose:
+    path:     /choose/{domain}
+    defaults: { _controller: "ChasseBundle:Interview:jobchoose" }
+    methods:  [GET, POST]
+
+job_select:
+    path:     /select
+    defaults: { _controller: "ChasseBundle:Interview:jobselect" }
+    methods:  [GET, POST]
+
+job_search:
+    path:     /search/{word}
+    defaults: { _controller: "ChasseBundle:Interview:jobsearch" }
+    methods:  POST
+
+job_searchhelp:
+    path:     /searchhelp/{jobid}
+    defaults: { _controller: "ChasseBundle:Interview:searchhelp" }
+    methods:  POST
+
+votevalid:
+    path:     /votevalid
+    defaults: { _controller: "ChasseBundle:Interview:voteValid" }
+
+user_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ChasseBundle:Interview:satisfaction" }
+    methods:  [GET, POST]

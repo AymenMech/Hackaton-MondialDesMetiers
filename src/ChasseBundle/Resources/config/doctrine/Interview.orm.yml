@@ -1,0 +1,45 @@
+ChasseBundle\Entity\Interview:
+    type: entity
+    table: null
+    repositoryClass: ChasseBundle\Repository\InterviewRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        bonusWord:
+            type: string
+            length: 255
+            column: bonus_word
+            nullable: true
+
+    manyToOne:
+        user:
+          targetEntity: User
+          inversedBy: interviews
+          joinColumn:
+            name: user_id
+            referencedColumnName: id
+        job:
+          targetEntity: Job
+          inversedBy: interviews
+          joinColumn:
+            name: job_id
+            referencedColumnName: id
+
+    manyToMany:
+        answers:
+          targetEntity: Answer
+          inversedBy: interviews
+          joinTable:
+            name: interviews_answers
+            joinColumns:
+              interview_id:
+                referencedColumnName: id
+            inverseJoinColumns:
+              answer_id:
+                referencedColumnName: id
+
+    lifecycleCallbacks: {  }

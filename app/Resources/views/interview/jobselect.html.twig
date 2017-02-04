@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sélection du métier - Tag ton métier{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
+
+                <h1>Choix du métier</h1>
+
+                <h2>Selectionne domaine puis métier</h2>
+                {{ form_start(form) }}
+                {{ form_row(form.domain, {label:'Choisis ton domaine'})}}
+                {{ form_widget(form) }}
+                <label class="required" for="job_choices" >Choisis ton métier :</label>
+                <select id="job_choices">
+                    <option value="" disabled selected>Métier</option>
+                </select>
+                <input id="btn_jobselect" class="btn disabled" type="submit" value="Selectionner ce métier">
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <!-- Main script -->
+    <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jobchoose.js') }}"></script>
+
+    <!-- Materialize -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Vote validé - Tag ton métier{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col offset-s1 s10 center-align">
+                <h1>Merci d'avoir participé !</h1>
+                <h2>Tes tags ont bien été enregistrés !</h2>
+                    {% if vote < 3 %}
+                <p>Il te reste encore <span>{{ 3 - vote }}</span> métiers à renseigner avant de pouvoir participer au tirage au sort !</p>
+                    {% endif %}
+            </div>
+            <div class="col offset-s1 s10 buttons_panel">
+                <a href="{{ path('job_select') }}" class="btn tag_btn">Taguer un autre métier</a>
+                <br>
+                <a href="{{ path('fos_user_security_logout') }}" class="btn">Déconnexion</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

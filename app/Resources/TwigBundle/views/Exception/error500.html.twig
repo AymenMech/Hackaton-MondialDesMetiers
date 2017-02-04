@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col offset-s1 s10 offset-m2 m8 center-align">
+                <h1>Oops</h1>
+
+                <p>Il semblerait qu'il y ait un petit souci technique, reessayez plus tard !</p>
+                <a class="waves-effect waves-light btn tag_btn" href="{{ path('index') }}">Retourner à la page d'accueil</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

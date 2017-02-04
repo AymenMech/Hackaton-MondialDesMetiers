@@ -24,16 +24,17 @@ class SearchJobController extends Controller
         $form = $this->createForm('ChasseBundle\Form\SearchJobType');
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
           $data =  $form->getData()['answers'];
-
+        $tagsId = array();
           foreach($data as $tag){
-
+              $tagsId[] = $tag->getId();
           }
-
-
+       //   var_dump($tagsId);
           //  $em = $this->getDoctrine()->getRepository('SearchRepository');
            // return $this->redirectToRoute('votevalid');
+
         }
 
         return $this->render('interview/searchjob.html.twig', array(

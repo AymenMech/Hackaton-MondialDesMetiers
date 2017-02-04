@@ -24,9 +24,14 @@ class SearchJobController extends Controller
         $form = $this->createForm('ChasseBundle\Form\SearchJobType');
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getRepository('SearchRepository');
-            return $this->redirectToRoute('votevalid');
+            //$em = $this->getDoctrine()->getRepository('SearchRepository');
+            var_dump($request);
+            return $this->render('interview:searchjob.html.twig', array(
+                //'result' => $result,
+            ));
+
         }
 
         return $this->render('interview/searchjob.html.twig', array(

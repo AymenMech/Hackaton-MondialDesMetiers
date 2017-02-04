@@ -48,5 +48,20 @@ class AnswerRepository extends EntityRepository
         return $qb->getResult();
 
     }
+
+    public function searchJobs()
+    {
+        $query = $this->createQueryBuilder('a')
+            ->select('a.id')
+            ->innerJoin('a.interviews', 'i')
+            ->where('a.id = i.id')
+            ->getQuery();
+
+        //echo $query->getSQL();die();
+        return $query->getResult();
+
+
+
+    }
 }
 

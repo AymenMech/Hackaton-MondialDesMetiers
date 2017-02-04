@@ -39,7 +39,7 @@ class InterviewRepository extends EntityRepository
         return $qb->getSingleScalarResult();
     }
 
-    public function get20jobs() { // function that returns the 20 most asnwered jobs
+    public function get20jobs() { // function that returns the 20 most answered jobs
         $qb = $this->createQueryBuilder('i')
             ->select('i.id as id', 'j.name as name', 'count(i.id) as total')
             //->innerJoin( 'i', 'Job', 'j', 'j.id = i.job')
@@ -53,7 +53,7 @@ class InterviewRepository extends EntityRepository
 
     }
 
-    public function get20domains() { //  function that returns the 20 most asnwered domains
+    public function get20domains() { //  function that returns the 20 most answered domains
         $qb = $this->createQueryBuilder('i')
             ->select('i', 'j.domain as domain', 'count(i.id) as total')
             ->innerJoin( 'i.job', 'j')

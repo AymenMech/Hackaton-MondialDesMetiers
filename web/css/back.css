@@ -1,0 +1,79 @@
+/** Global Style **/
+
+h1, h2, h3, h4, p, td, a {
+    font-family: 'Roboto', sans-serif;
+}
+
+th {
+    font-size: 17px;
+}
+
+td {
+    font-size: 12px;
+}
+
+/** All back title **/
+
+.back-title {
+    font-weight: 900;
+    text-align: center;
+}
+
+.back-hr {
+    border: 2px solid #732E87;
+}
+
+.winner h2 {
+    text-align: center;
+    font-weight: 900;
+}
+
+.winner span {
+    font-size: 50px;
+}
+
+.winner p {
+    text-align: center;
+}
+
+.button-back {
+    background: #363636;
+    border: 1px solid;
+    border-radius: 50px;
+    color: #ffffff;
+    display: block;
+    padding: 10px 20px;
+    text-align: center;
+    margin: 0 auto 25px;
+    width: 30rem;
+}
+
+.button-back:hover {
+    background-color: #404040;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.button a {
+    text-decoration: none;
+}
+
+.pagination {
+    display: block;
+    margin: 0 auto;
+}
+
+/** Statistics cards **/
+
+.statistic-card {
+    text-align: center;
+    margin-bottom: 110px;
+    clear: both;
+}
+.statistic-card span {
+    font-size: 50px;
+}
+
+.text-back {
+    font-size: 13px;
+}

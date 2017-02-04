@@ -3,7 +3,7 @@
 namespace ChasseBundle\Controller;
 
 use ChasseBundle\Entity\Interview;
-use ChasseBundle\Entity\Job;
+use ChasseBundle\Entity\Answer;
 use ChasseBundle\Repository\JobRepository;
 use ChasseBundle\Repository\AnswerRepository;
 use ChasseBundle\Repository\InterviewRepository;
@@ -25,8 +25,15 @@ class SearchJobController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getRepository('SearchRepository');
-            return $this->redirectToRoute('votevalid');
+          $data =  $form->getData()['answers'];
+
+          foreach($data as $tag){
+
+          }
+
+
+          //  $em = $this->getDoctrine()->getRepository('SearchRepository');
+           // return $this->redirectToRoute('votevalid');
         }
 
         return $this->render('interview/searchjob.html.twig', array(

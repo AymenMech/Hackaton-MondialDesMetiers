@@ -111,8 +111,8 @@ easy_admin:
         brand_color: '#732E87'
         menu:
             - { label: 'Espace AROM'}
-            - { label: 'Statistique applications', route: 'stats' }
-            - { label: 'Statistique par catégories', route: 'catstats'}
+            - { label: 'Statistiques applications', route: 'stats' }
+            - { label: 'Statistiques par catégories', route: 'catstats'}
             - { label: 'Statistiques utilisateurs', route: 'userstats', params:{page:1}}
             - { label: 'Loterie', route: 'winner' }
             - { label: 'Gestion site'}

@@ -53,12 +53,6 @@
                         <td>{{ job.name }}</td>
                         <td>{{ job.total }}</td>
                     </tr>
-                    {% set test = {'name': job.name} %}
-                    {% set testjson = test|json_encode %}
-                    <input type="hidden" class="testjson" value="{{ testjson }}">
-                    {% set total = {'total': job.total} %}
-                    {% set totaljson = total|json_encode %}
-                    <input type="hidden" class="totaljson" value="{{ totaljson }}">
                 {% endfor %}
             </table>
         </div>
@@ -68,7 +62,7 @@
 
     <section class="container-fluid">
         <div class="col-xs-6">
-            <h2> Classement des 20 domaines les plus répondus</h2>
+            <h2>Classement des 20 domaines les plus répondus</h2>
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -84,6 +78,7 @@
                 {% endfor %}
             </table>
         </div>
+        <div class="col-xs-6 job-canvas"><canvas id="myChart3"></canvas></div>
     </section>
 
     <section class="container-fluid">
@@ -104,6 +99,7 @@
                 {% endfor %}
             </table>
         </div>
+        <div class="col-xs-6 job-canvas"><canvas id="myChart4"></canvas></div>
     </section>
         <script src="{{ asset('js/Chart.js') }}"></script>
 
@@ -134,31 +130,69 @@
     </script>
 
     <script>
-        {#% for job in mostAnsweredJobs %}
-        var a = [{{ job.name }}];
-        //console.log(a);
-        {% endfor %#}
+        var ctx = document.getElementById('myChart2').getContext('2d');
+        var myChart2 = new Chart(ctx, {
+            type: 'bar',
+            data: { labels: ["Classement des 20 métiers les plus répondus"],
+                datasets: [
+                    {% set i = 0 %}
+
+                    {% for job in mostAnsweredJobs %}
+                    {
+                        label: '{{ job.name }}',
+                        data: [{{ job.total }}],
+                        backgroundColor: [
+                            "{{ colors[i] }}"
+                        ]
+                    },
+                    {% set i = i + 1 %}
+                    {% endfor %}]
+                  }
+        });
     </script>
     <script>
-        var names =  document.getElementsByClassName('testjson');
-        //var bordel =  document.getElementsByClassName('testjson');
-        for(var i = 0; i < names.length; i++) {
-            var name = JSON.parse(names[i].value);
-            console.log(name);
-            //for (i=0;i<21;i++){
-            var ctx = document.getElementById('myChart2').getContext('2d');
-            var myChart2 = new Chart(ctx, {
-                type: 'horizontalBar',
-                data: {
-                    labels: [],
-                    datasets: [{
-                        label: 'apples',
-                        data: [12, 19, 3, 17, 28, 24, 7]
-                    }]
-                }
-            });
-        }//}
+        var ctx = document.getElementById('myChart3').getContext('2d');
+        var myChart3 = new Chart(ctx, {
+            type: 'bar',
+            data: { labels: ["Classement des 20 domaines les plus répondus"],
+                datasets: [
+                    {% set i = 0 %}
+
+                    {% for domain in mostAnsweredDomains %}
+                    {
+                        label: '{{ domain.domain }}',
+                        data: [{{ domain.total }}],
+                        backgroundColor: [
+                            "{{ colors[i] }}"
+                        ]
+                    },
+                    {% set i = i + 1 %}
+                    {% endfor %}]
+            }
+        });
     </script>
+    <script>
+        var ctx = document.getElementById('myChart4').getContext('2d');
+        var myChart3 = new Chart(ctx, {
+            type: 'bar',
+            data: { labels: ["Classement des 20 domaines les plus répondus"],
+                datasets: [
+                    {% set i = 0 %}
+
+                    {% for word in words %}
+                    {
+                        label: '{{ word.word }}',
+                        data: [{{ word.nb }}],
+                        backgroundColor: [
+                            "{{ colors[i] }}"
+                        ]
+                    },
+                    {% set i = i + 1 %}
+                    {% endfor %}]
+            }
+        });
+    </script>
+
 
 {% endblock %}
 

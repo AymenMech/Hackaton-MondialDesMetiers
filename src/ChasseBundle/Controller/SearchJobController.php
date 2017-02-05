@@ -5,7 +5,11 @@ namespace ChasseBundle\Controller;
 use ChasseBundle\Entity\IntAns;
 use ChasseBundle\Entity\Interview;
 use ChasseBundle\Entity\Answer;
+use ChasseBundle\Repository\JobRepository;
+use ChasseBundle\Repository\AnswerRepository;
+use ChasseBundle\Repository\InterviewRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use ChasseBundle\Entity\User;
@@ -14,7 +18,7 @@ use ChasseBundle\Entity\User;
 
 class SearchJobController extends Controller
 {
-    public function searchAction(Request $request, $result)
+    public function searchAction(Request $request)
     {
         /* Get user logged and job chosen before */
         /* Generate form and set data for user and job */
@@ -22,8 +26,8 @@ class SearchJobController extends Controller
         $form->handleRequest($request);
 
 
-       if ($form->isSubmitted() && $form->isValid()) {
-             $data =  $form->getData()['answers'];
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data =  $form->getData()['answers'];
             $jobs = array();
             /** @var Answer $tag */
             foreach($data as $tag){
@@ -32,7 +36,8 @@ class SearchJobController extends Controller
                     $jobName = $interview->getJob()->getName();
                     $jobs[] = $jobName;
                 }
-            }
+
+                }
                 $jobs = array_count_values($jobs);
                 arsort($jobs,SORT_NATURAL | SORT_FLAG_CASE);
 
@@ -45,7 +50,6 @@ class SearchJobController extends Controller
 
         return $this->render('interview/searchjob.html.twig', array(
             'form' => $form->createView(),
-            'result' => $result
         ));
     }
 

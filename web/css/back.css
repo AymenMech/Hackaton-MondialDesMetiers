@@ -77,3 +77,9 @@ td {
 .text-back {
     font-size: 13px;
 }
+
+/** Canvas CSS **/
+
+.job-canvas {
+    margin-top: 250px;
+}

@@ -56,7 +56,7 @@
                 {% endfor %}
             </table>
         </div>
-        <div><canvas id="myChart2"></canvas></div>
+        <div class="col-xs-6 job-canvas"><canvas id="myChart2"></canvas></div>
 
     </section>
 
@@ -126,7 +126,23 @@
             }
         });
     </script>
+    <script>
+        var ctx = document.getElementById('myChart2').getContext('2d');
+        var myChart2 = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["M", "T", "W", "R", "F", "S", "S"],
+                datasets: [{
+                    label: 'apples',
+                    data: [12, 19, 3, 17, 28, 24, 7]
+                }, {
+                    label: 'oranges',
+                    data: [30, 29, 5, 5, 20, 3, 10]
+                }]
+            }
+        });
 
+    </script>
 
 {% endblock %}
 

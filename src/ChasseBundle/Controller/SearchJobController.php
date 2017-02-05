@@ -21,10 +21,9 @@ class SearchJobController extends Controller
         $form = $this->createForm('ChasseBundle\Form\SearchJobType');
         $form->handleRequest($request);
 
-        $em = $this->getDoctrine()->getManager();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $data =  $form->getData()['answers'];
+       if ($form->isSubmitted() && $form->isValid()) {
+             $data =  $form->getData()['answers'];
             $jobs = array();
             /** @var Answer $tag */
             foreach($data as $tag){
@@ -33,8 +32,7 @@ class SearchJobController extends Controller
                     $jobName = $interview->getJob()->getName();
                     $jobs[] = $jobName;
                 }
-
-                }
+            }
                 $jobs = array_count_values($jobs);
                 arsort($jobs,SORT_NATURAL | SORT_FLAG_CASE);
 

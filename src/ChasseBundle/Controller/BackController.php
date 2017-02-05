@@ -3,6 +3,7 @@
 namespace ChasseBundle\Controller;
 
 use ChasseBundle\ChasseBundle;
+use ChasseBundle\Entity\Interview;
 use ChasseBundle\Entity\User;
 use ChasseBundle\Repository\UserRepository;
 use DateTime;
@@ -150,11 +151,16 @@ class BackController extends Controller
 
         $jobGenderH = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getJobByGenreH();
         $jobGenderF = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getJobByGenreF();
+
+        /**
+         * @var Interview
+         */
+
         return $this->render(':Back/page:searchstats.html.twig', array(
             'domGenderH' => $domGenderH,
             'domGenderF' => $domGenderF,
             'jobGenderH' => $jobGenderH,
-            'jobGenderF' => $jobGenderF
+            'jobGenderF' => $jobGenderF,
 
         ));
     }

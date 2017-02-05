@@ -167,7 +167,7 @@ class InterviewRepository extends EntityRepository
 
     public function getTagByGenreH()
     {
-        $qb = $this->createQueryBuilder('i')
+        $qb = $this->createQueryBuilder('interview_repository')
             ->select('i', 'j.name as name', 'count(i.id) as total')
             ->innerJoin( 'i.job', 'j')
             ->where('u.gender = :data')

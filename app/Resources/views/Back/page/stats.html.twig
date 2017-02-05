@@ -1,0 +1,150 @@
+{% extends ":Back:layout.html.twig" %}
+
+
+{% block main %}
+    <section class="container-fluid">
+            <div class="container">
+            <h1 class="back-title">Statistiques d'utilisation de l'application</h1>
+                <hr class="back-hr">
+            <br>
+            <div class="col-xs-6 statistic-card">
+                <div class="stat-cards col-xs-4">
+                    <div class="col-xs-12"><p><span><b>{{ totalusers }}</b></span></p></div>
+                    <div class="col-xs-12 text-back"><p><small>Nombre d'utilisateurs enregistrés</small></p></div>
+                </div>
+
+                <div class="stat-cards col-xs-4">
+                    <div class="col-xs-12"><p><span><b>{{ activeusers }}</b></span></p></div>
+                    <div class="col-xs-12 text-back"><p><small>Nombre d' utilisateurs actifs</small></p></div>
+                </div>
+
+                <div class="stat-cards col-xs-4">
+                    <div class="col-xs-12"><p><span><b>{{ eligibleuser }}</b></span></p></div>
+                    <div class="col-xs-12 text-back"><p><small>Nombre d'utilisateurs pouvant participer au tirage au sort</small></p></div>
+                </div>
+
+                <div class="stat-cards col-xs-4">
+                    <div class="col-xs-12"><span><b>{{ nbjobs }}</b></span><p></div>
+                    <div class="col-xs-12 text-back"><p><small>Nombre de métiers ayant reçus des réponses</small></p></div>
+                </div>
+
+                <div class="stat-cards col-xs-4">
+                    <div class="col-xs-12"><p><span><b>{{ nbdomains }}</b></span></p></div>
+                    <div class="col-xs-12 text-back"><p><small>Nombre de domaines ayant reçus des réponses</small></p></div>
+                </div>
+            </div>
+            <div class="col-xs-6"><canvas id="myChart"></canvas></div>
+        </div>
+    </section>
+
+
+    <section class="container-fluid">
+        <div class="col-xs-6">
+            <h2>Classement des 20 métiers les plus répondus</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Métier</th>
+                    <th>Nombre de réponses</th>
+                </tr>
+                </thead>
+                {% for job in mostAnsweredJobs %}
+                    <tr>
+                        <td>{{ job.name }}</td>
+                        <td>{{ job.total }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-xs-6 job-canvas"><canvas id="myChart2"></canvas></div>
+
+    </section>
+
+    <section class="container-fluid">
+        <div class="col-xs-6">
+            <h2> Classement des 20 domaines les plus répondus</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Domaine</th>
+                    <th>Nombre de réponses</th>
+                </tr>
+                </thead>
+                {% for domain in mostAnsweredDomains %}
+                    <tr>
+                        <td>{{ domain.domain }}</td>
+                        <td>{{ domain.total }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </section>
+
+    <section class="container-fluid">
+        <div class="col-xs-6">
+        <h2> Classement des 20 mots les plus utilisés</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Mot</th>
+                    <th>Nombre</th>
+                </tr>
+                </thead>
+                {% for word in words %}
+                    <tr>
+                        <td>{{ word.word }}</td>
+                        <td>{{ word.nb }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </section>
+        <script src="{{ asset('js/Chart.js') }}"></script>
+
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                        "Nombre d'utilisateurs enregistrés",
+                        "Nombre d' utilisateurs actifs",
+                        "Nombre d'utilisateurs pouvant participer au tirage au sort",
+                        "Nombre de métiers ayant reçus des réponses",
+                        "Nombre de domaines ayant reçus des réponses"
+                ],
+                datasets: [{
+                    backgroundColor: [
+                        "#2ecc71",
+                        "#3498db",
+                        "#95a5a6",
+                        "#9b59b6",
+                        "#f1c40f"
+                    ],
+                    data: [{{ totalusers }}, {{ activeusers }}, {{ eligibleuser }}, {{ nbjobs }}, {{ nbdomains }}]
+                }]
+            }
+        });
+    </script>
+    <script>
+        var ctx = document.getElementById('myChart2').getContext('2d');
+        var myChart2 = new Chart(ctx, {
+            type: 'bar',
+            data: { labels: ["Classement des 20 métiers les plus répondus"],
+                datasets: [
+
+                    {% for job in mostAnsweredJobs %}
+                    {
+                        label: '{{ job.name }}',
+                        data: [{{ job.total }}]
+                    },
+
+                    {% endfor %}]
+                  }
+        });
+    </script>
+
+
+{% endblock %}
+
+  {% block body_javascripts %}{% endblock %}

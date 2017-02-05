@@ -1,0 +1,21 @@
+{
+  "name": "Hackaton-MondialDesMetiers",
+  "homepage": "https://github.com/AymenMech/Hackaton-MondialDesMetiers",
+  "authors": [
+    "Nagx <k.javazzo@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "chart.js": "chartjs#^2.4.0",
+    "moment": "^2.17.1"
+  }
+}

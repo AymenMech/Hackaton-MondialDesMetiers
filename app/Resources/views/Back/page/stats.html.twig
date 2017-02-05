@@ -143,9 +143,13 @@
                     {% for job in mostAnsweredJobs %}
                     {
                         label: '{{ job.name }}',
-                        data: [{{ job.total }}]
+                        data: [{{ job.total }}],
+                        backgroundColor: [
+                            "#2ecc71", "#3498db", "#95a5a6", "#9b59b6", "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f",
+                            "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f",
+                            "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f"
+                        ]
                     },
-
                     {% endfor %}]
                   }
         });

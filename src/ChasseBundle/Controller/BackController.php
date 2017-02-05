@@ -15,6 +15,12 @@ class BackController extends Controller
 {
     public function statsAction()
     {
+        $colors = [
+            "#2ecc71", "#3498db", "#95a5a6", "#9b59b6", "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f",
+            "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f",
+            "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f",
+        ];
+
         //nb of registered users
         $userManager = $this->container->get('fos_user.user_manager');
         $users = count($userManager->findUsers());
@@ -52,6 +58,7 @@ class BackController extends Controller
             "mostAnsweredDomains" => $mostAnsweredDomains,
             "words" => $words,
             "eligibleuser" => $eligibleuser,
+            "colors" => $colors,
         ));
     }
 

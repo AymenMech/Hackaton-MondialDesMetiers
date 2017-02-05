@@ -90,6 +90,7 @@ fos_user:
 
 # Easy Admin
 easy_admin:
+    site_name: '#Tag ton métier'
     entities:
         User:
             class: ChasseBundle\Entity\User
@@ -107,9 +108,11 @@ easy_admin:
             list:
                 title: "Liste des métiers"
     design:
+        brand_color: '#732E87'
         menu:
             - { label: 'Espace AROM'}
             - { label: 'Statistique applications', route: 'stats' }
+            - { label: 'Statistique par catégories', route: 'catstats'}
             - { label: 'Statistiques utilisateurs', route: 'userstats', params:{page:1}}
             - { label: 'Loterie', route: 'winner' }
             - { label: 'Gestion site'}

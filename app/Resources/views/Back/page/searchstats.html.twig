@@ -1,0 +1,13 @@
+{% extends ":Back:layout.html.twig" %}
+
+{% block main %}
+        <h1>20 dom + Homme</h1>
+    {% for domGenderHs in domGenderH %}
+        <p>{{ domGenderHs.domain }} : {{ domGenderHs.total }}</p>
+    {% endfor %}
+        <h1>20 dom + femme</h1>
+    {% for domGenderFs in domGenderF %}
+        <p>{{ domGenderFs.domain }} : {{ domGenderFs.total }}</p>
+    {% endfor %}
+
+{% endblock %}

@@ -17,6 +17,7 @@
             <p>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</p>
 
             <a class="btn waves-effect waves-light inscriptbtn" href="{{ path('job_select') }}">Taguer un métier</a>
+            <a class="btn waves-effect waves-light inscriptbtn" href="{{ path('search_job') }}">Trouve ton job</a>
             <br>
             {% if is_granted('ROLE_ADMIN') %}
                 <a class="waves-effect waves-light btn inscriptbtn" href="{{ path('admin') }}">Panneau d'administration</a>

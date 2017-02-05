@@ -51,20 +51,14 @@
             {{ form_row(form.answers, {label:none, 'attr': {'class': 'hidden-row'}})}}
             {{ form_widget(form) }}
         </div>
-        <div class="row">
+        <div class="row center">
             <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6">
-                <input class="btn jevote" type="submit" value="Tag ton métier">
+                <input class="btn jevote " type="submit" value="Trouve ton job">
             </div>
         </div>
         {{ form_end(form) }}
     </div>
-    {% for results in result %}
-    {% if result is not null and result is not empty %}
 
-            {{ dump(results) }}
-
-    {% endif %}
-    {% endfor %}
     <div class="bloc_sp_s"></div>
 {% endblock %}
 

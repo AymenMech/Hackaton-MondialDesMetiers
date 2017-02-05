@@ -113,6 +113,7 @@ class InterviewRepository extends EntityRepository
             ->orderBy('total', 'DESC')
             ->setMaxResults(20)
             ->getQuery();
+
         return $qb->getResult();
     }
 
@@ -128,8 +129,75 @@ class InterviewRepository extends EntityRepository
             ->orderBy('total', 'DESC')
             ->setMaxResults(20)
             ->getQuery();
+
         return $qb->getResult();
     }
+
+    public function getJobByGenreH()
+    {
+        $qb = $this->createQueryBuilder('i')
+            ->select('i', 'j.name as name', 'count(i.id) as total')
+            ->innerJoin( 'i.job', 'j')
+            ->where('u.gender = :data')
+            ->setParameter('data', 'H')
+            ->innerJoin('i.user', 'u')
+            ->groupBy('j.name')
+            ->orderBy('total', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery();
+
+        return $qb->getResult();
+    }
+
+    public function getJobByGenreF()
+    {
+        $qb = $this->createQueryBuilder('i')
+            ->select('i', 'j.name as name', 'count(i.id) as total')
+            ->innerJoin( 'i.job', 'j')
+            ->where('u.gender = :data')
+            ->setParameter('data', 'F')
+            ->innerJoin('i.user', 'u')
+            ->groupBy('j.name')
+            ->orderBy('total', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery();
+
+        return $qb->getResult();
+    }
+
+    public function getTagByGenreH()
+    {
+        $qb = $this->createQueryBuilder('interview_repository')
+            ->select('i', 'j.name as name', 'count(i.id) as total')
+            ->innerJoin( 'i.job', 'j')
+            ->where('u.gender = :data')
+            ->setParameter('data', 'H')
+            ->innerJoin('i.user', 'u')
+            ->groupBy('j.name')
+            ->orderBy('total', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery();
+
+        return $qb->getResult();
+    }
+
+    public function getTagByGenreF()
+    {
+        $qb = $this->createQueryBuilder('i')
+            ->select('i', 'j.name as name', 'count(i.id) as total')
+            ->innerJoin( 'i.job', 'j')
+            ->where('u.gender = :data')
+            ->setParameter('data', 'F')
+            ->innerJoin('i.user', 'u')
+            ->groupBy('j.name')
+            ->orderBy('total', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery();
+
+        return $qb->getResult();
+    }
+
+
 
     /*public function getBystatus($a)
     {

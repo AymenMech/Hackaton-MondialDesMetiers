@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sélection du métier - Tag ton métier{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row center">
+        <div class="col offset-s1 s10 offset-m2 m8 offset-l3 l6 ">
+
+            <h1>Les Jobs de tes rêves</h1>
+
+            {% for job,val in jobs %}
+                {% if loop.index < 5 %}
+               <p>{{ job }}</p>
+                {% endif %}
+            {% endfor %}
+            <a href="{{ path('search_job') }}">
+                <button type="submit" class="btn waves-effect waves-light btn_cab_check" value="Check" >Chercher avec d'autres tags
+                    <i class="material-icons right">replay</i>
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<!-- Main script -->
+<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jobchoose.js') }}"></script>
+
+<!-- Materialize -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+
+{% endblock %}

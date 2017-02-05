@@ -42,7 +42,7 @@ class SearchJobController extends Controller
                 arsort($jobs,SORT_NATURAL | SORT_FLAG_CASE);
 
           // $em = $this->getDoctrine()->getRepository('SearchRepository');
-            return $this->render('interview/searchjob.html.twig', array(
+            return $this->render('interview/jobs.html.twig', array(
                 'jobs' => $jobs,
                 'form' => $form->createView(),
             ));

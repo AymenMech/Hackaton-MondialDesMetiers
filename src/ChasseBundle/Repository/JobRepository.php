@@ -31,4 +31,5 @@ class JobRepository extends EntityRepository
         return $qb->getResult();
 
     }
+
 }

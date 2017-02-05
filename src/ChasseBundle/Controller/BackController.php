@@ -55,7 +55,7 @@ class BackController extends Controller
         ));
     }
 
-    public function userStatsAction ($page = 1) {
+    public function userStatsAction ($page = 1, $dom) {
         //paginator
         $start = ($page-1) * UserRepository::MAX_RESULT;
         $subscribers = $this->getDoctrine()->getRepository('ChasseBundle:User')->getSubscribers($start);
@@ -97,6 +97,7 @@ class BackController extends Controller
             'maxPage'     => $maxPage,
             'total'       => $total,
             "totalusers"  => $users,
+
         ));
     }
 
@@ -139,6 +140,17 @@ class BackController extends Controller
 
         return $this->render('Back/page/winner.html.twig', array(
             "winner"          =>    $winner,
+        ));
+    }
+
+    public function statSearchAction()
+    {
+        $domGenderH = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getByGenreH();
+        $domGenderF = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getByGenreF();
+
+        return $this->render(':Back/page:searchstats.html.twig', array(
+            'domGenderH' => $domGenderH,
+            'domGenderF' => $domGenderF
         ));
     }
 }

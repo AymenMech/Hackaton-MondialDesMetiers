@@ -113,7 +113,6 @@ class InterviewRepository extends EntityRepository
             ->orderBy('total', 'DESC')
             ->setMaxResults(20)
             ->getQuery();
-
         return $qb->getResult();
     }
 
@@ -129,7 +128,26 @@ class InterviewRepository extends EntityRepository
             ->orderBy('total', 'DESC')
             ->setMaxResults(20)
             ->getQuery();
-
         return $qb->getResult();
     }
+
+    /*public function getBystatus($a)
+    {
+        $qb = $this->createQueryBuilder('i')
+            ->select('i', 'j.domain as domain', 'count(i.id) as total')
+            ->innerJoin('i.job', 'j')
+            ->innerJoin('i.user', 'u');
+
+        $status = array("Autre", "Salarié", "Adulte en réorientation", "Collégien", 'Demandeur d\'emploi', "Etudiant", "Lycéen", 'Professionnel de l\'orientation et de la formation');
+            foreach ($status as $statu) {
+                $qb->where('u.status = :' . $statu)
+                    ->setParameter($statu, $a)
+                    ->groupBy('j.domain')
+                    ->orderBy('total', 'DESC')
+                    ->setMaxResults(20);
+            }
+        //echo $qb->getQuery()->getSQL();die();
+            return $qb->getQuery()->getResult();
+
+    }*/
 }

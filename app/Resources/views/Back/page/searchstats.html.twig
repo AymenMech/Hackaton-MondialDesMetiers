@@ -9,5 +9,8 @@
     {% for domGenderFs in domGenderF %}
         <p>{{ domGenderFs.domain }} : {{ domGenderFs.total }}</p>
     {% endfor %}
-
+    <h1>20 dom + statut</h1>
+    {% for domStatuss in domStatus %}
+        <p>{{ domStatuss.domain }} : {{ domStatuss.total }}</p>
+    {% endfor %}
 {% endblock %}

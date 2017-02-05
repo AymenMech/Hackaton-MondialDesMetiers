@@ -143,14 +143,17 @@ class BackController extends Controller
         ));
     }
 
-    public function statSearchAction()
+    public function statSearchAction($a)
     {
         $domGenderH = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getByGenreH();
         $domGenderF = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getByGenreF();
+        $domStatus = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getBystatus($a);
+
 
         return $this->render(':Back/page:searchstats.html.twig', array(
             'domGenderH' => $domGenderH,
-            'domGenderF' => $domGenderF
+            'domGenderF' => $domGenderF,
+            'domStatus' => $domStatus
         ));
     }
 }

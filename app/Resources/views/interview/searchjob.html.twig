@@ -58,7 +58,13 @@
         </div>
         {{ form_end(form) }}
     </div>
+    {% for results in result %}
+    {% if result is not null and result is not empty %}
 
+            {{ dump(results) }}
+
+    {% endif %}
+    {% endfor %}
     <div class="bloc_sp_s"></div>
 {% endblock %}
 

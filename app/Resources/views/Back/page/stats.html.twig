@@ -139,17 +139,17 @@
             type: 'bar',
             data: { labels: ["Classement des 20 métiers les plus répondus"],
                 datasets: [
+                    {% set i = 0 %}
 
                     {% for job in mostAnsweredJobs %}
                     {
                         label: '{{ job.name }}',
                         data: [{{ job.total }}],
                         backgroundColor: [
-                            "#2ecc71", "#3498db", "#95a5a6", "#9b59b6", "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f",
-                            "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f",
-                            "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f"
+                            "{{ colors[i] }}"
                         ]
                     },
+                    {% set i = i + 1 %}
                     {% endfor %}]
                   }
         });

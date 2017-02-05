@@ -141,6 +141,8 @@
                     {% for job in mostAnsweredJobs %}
                     {
                         label: '{{ job.name }}',
+                        canvasheight:800,
+                        canvaswidth:500,
                         data: [{{ job.total }}],
                         backgroundColor: [
                             "{{ colors[i] }}"
@@ -159,14 +161,16 @@
                                 beginAtZero: true
                             }
                         }]
-                    }
+                    },
+                    responsive:true,
+                    maintainAspectRatio: false
                 }
         });
     </script>
     <script>
         var ctx = document.getElementById('myChart3').getContext('2d');
         var myChart3 = new Chart(ctx, {
-            type: 'bar',
+            type: 'horizontalBar',
             data: { labels: ["Classement des 20 domaines les plus répondus"],
                 datasets: [
                     {% set i = 0 %}
@@ -174,6 +178,8 @@
                     {% for domain in mostAnsweredDomains %}
                     {
                         label: '{{ domain.domain }}',
+                        canvasheight:800,
+                        canvaswidth:500,
                         data: [{{ domain.total }}],
                         backgroundColor: [
                             "{{ colors[i] }}"
@@ -189,13 +195,15 @@
                             beginAtZero: true
                         }
                     }]
-                }
+                },
+                responsive:true,
+                maintainAspectRatio: false
             }
         });
     </script>
     <script>
         var ctx = document.getElementById('myChart4').getContext('2d');
-        var myChart3 = new Chart(ctx, {
+        var myChart4 = new Chart(ctx, {
             type: 'bar',
             data: { labels: ["Classement des 20 domaines les plus répondus"],
                 datasets: [
@@ -204,6 +212,7 @@
                     {% for word in words %}
                     {
                         label: '{{ word.word }}',
+
                         data: [{{ word.nb }}],
                         backgroundColor: [
                             "{{ colors[i] }}"
@@ -218,8 +227,15 @@
                         ticks: {
                             beginAtZero: true
                         }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            maxTicksLimit:10}
                     }]
-                }
+                },
+                responsive:true,
+                maintainAspectRatio: false
             }
         });
     </script>

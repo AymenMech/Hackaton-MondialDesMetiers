@@ -107,8 +107,9 @@
 
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');
+
         var myChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'horizontalBar',
             data: { labels: ["Classement des 20 domaines les plus répondus par Femme"],
                 datasets: [
                     {% set i = 0 %}
@@ -116,6 +117,9 @@
                     {% for domGenderFs in domGenderF %}
                     {
                         label: '{{ domGenderFs.domain }}',
+                        canvasheight:800,
+                        canvaswidth:500,
+
                         data: [{{ domGenderFs.total }}],
                         backgroundColor: [
                             "{{ colors[i] }}"
@@ -128,18 +132,26 @@
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
+                            beginAtZero: true,
+                            scaleStepWidth:10
+                            }}],
+                    xAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            //max: 3,
+                            maxTicksLimit:10}
+                            }]
+                        },
+                responsive:true,
+                maintainAspectRatio: false
+                    }
         });
     </script>
 
     <script>
         var ctx = document.getElementById('myChart2').getContext('2d');
         var myChart2 = new Chart(ctx, {
-            type: 'bar',
+            type: 'horizontalBar',
             data: { labels: ["Classement des 20 domaines les plus répondus par Homme"],
                 datasets: [
                     {% set i = 0 %}
@@ -147,6 +159,8 @@
                     {% for domGenderHs in domGenderH %}
                     {
                         label: '{{ domGenderHs.domain }}',
+                        canvasheight:800,
+                        canvaswidth:500,
                         data: [{{ domGenderHs.total }}],
                         backgroundColor: [
                             "{{ colors[i] }}"
@@ -159,10 +173,18 @@
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            scaleStepWidth:10
                         }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            maxTicksLimit:10}
                     }]
-                }
+                },
+                responsive:true,
+                maintainAspectRatio: false
             }
         });
     </script>
@@ -171,7 +193,7 @@
     <script>
         var ctx = document.getElementById('myChart3').getContext('2d');
         var myChart4 = new Chart(ctx, {
-            type: 'bar',
+            type: 'horizontalBar',
             data: { labels: ["Classement des 20 métiers les plus tagués par Femme"],
                 datasets: [
                     {% set i = 0 %}
@@ -179,6 +201,8 @@
                     {% for jobGenderFs in jobGenderF %}
                     {
                         label: '{{ jobGenderFs.name }}',
+                        canvasheight:800,
+                        canvaswidth:500,
                         data: [{{ jobGenderFs.total }}],
                         backgroundColor: [
                             "{{ colors[i] }}"
@@ -193,8 +217,15 @@
                         ticks: {
                             beginAtZero: true
                         }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            maxTicksLimit:10}
                     }]
-                }
+                },
+                responsive:true,
+                maintainAspectRatio: false
             }
         });
     </script>
@@ -202,7 +233,7 @@
     <script>
         var ctx = document.getElementById('myChart4').getContext('2d');
         var myChart4 = new Chart(ctx, {
-            type: 'bar',
+            type: 'horizontalBar',
             data: { labels: ["Classement des 20 métiers les plus tagués par Homme"],
                 datasets: [
                     {% set i = 0 %}
@@ -210,6 +241,8 @@
                     {% for jobGenderHs in jobGenderH %}
                     {
                         label: '{{ jobGenderHs.name }}',
+                        canvasheight:800,
+                        canvaswidth:500,
                         data: [{{ jobGenderHs.total }}],
                         backgroundColor: [
                             "{{ colors[i] }}"
@@ -224,8 +257,15 @@
                         ticks: {
                             beginAtZero: true
                         }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            maxTicksLimit:10}
                     }]
-                }
+                },
+                responsive:true,
+                maintainAspectRatio: false
             }
         });
     </script>

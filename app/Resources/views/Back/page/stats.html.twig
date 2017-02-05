@@ -143,11 +143,23 @@
                         data: [{{ job.total }}],
                         backgroundColor: [
                             "{{ colors[i] }}"
-                        ]
+                        ],
+                        options: {
+
+                        }
                     },
                     {% set i = i + 1 %}
                     {% endfor %}]
-                  }
+                  },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
         });
     </script>
     <script>
@@ -168,6 +180,15 @@
                     },
                     {% set i = i + 1 %}
                     {% endfor %}]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
             }
         });
     </script>
@@ -189,6 +210,15 @@
                     },
                     {% set i = i + 1 %}
                     {% endfor %}]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
             }
         });
     </script>

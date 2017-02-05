@@ -6,6 +6,10 @@ userstats:
     path:     /statistiques-utilisateurs/{page}
     defaults: { _controller: ChasseBundle:Back:userStats }
 
+catstats:
+    path:     /statistiques-catégories
+    defaults: { _controller: ChasseBundle:Back:statSearch }
+
 winner:
     path:     /gagnant
     defaults: {_controller: ChasseBundle:Back:winner}

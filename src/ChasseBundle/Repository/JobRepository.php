@@ -32,15 +32,4 @@ class JobRepository extends EntityRepository
 
     }
 
-    /*public function getHelp(){
-        $qb = $this->createQueryBuilder('j', 'a')
-            ->select('j.id', 'a.id')
-            ->from()
-            ->innerjoin('a.interview', 'i')
-            ->where('ia.answer_id = 239')
-            ->getQuery();
-
-            echo $qb->getSQL();die();
-            return $qb->getResult();
-    }*/
 }

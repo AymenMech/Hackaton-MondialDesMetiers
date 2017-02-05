@@ -101,17 +101,35 @@ class InterviewRepository extends EntityRepository
         return $qb->getScalarResult();
     }
 
-    /*public function getbysearch()
+    public function getByGenreH()
     {
         $qb = $this->createQueryBuilder('i')
-            ->join('i.answer', 'a')
-            ->join('i.job', 'j')
-            ->where('i.id = a.id')
-            ->andWhere('i.job_id = j.id');
-            //->getQuery();
+            ->select('i', 'j.domain as domain', 'count(i.id) as total')
+            ->innerJoin( 'i.job', 'j')
+            ->where('u.gender = :data')
+            ->setParameter('data', 'H')
+            ->innerJoin('i.user', 'u')
+            ->groupBy('j.domain')
+            ->orderBy('total', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery();
 
-        echo $qb->getQuery()->getSQL();die;
-        //return $qb->getResult();
-    }*/
+        return $qb->getResult();
+    }
 
+    public function getByGenreF()
+    {
+        $qb = $this->createQueryBuilder('i')
+            ->select('i', 'j.domain as domain', 'count(i.id) as total')
+            ->innerJoin( 'i.job', 'j')
+            ->where('u.gender = :data')
+            ->setParameter('data', 'F')
+            ->innerJoin('i.user', 'u')
+            ->groupBy('j.domain')
+            ->orderBy('total', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery();
+
+        return $qb->getResult();
+    }
 }

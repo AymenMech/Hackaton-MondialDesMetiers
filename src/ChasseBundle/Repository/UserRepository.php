@@ -94,4 +94,5 @@ class UserRepository extends EntityRepository
 
         return $result;
     }
+
 }

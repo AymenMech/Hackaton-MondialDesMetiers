@@ -154,6 +154,11 @@ class BackController extends Controller
 
     public function statSearchAction()
     {
+        $colors = [
+            "#2ecc71", "#3498db", "#95a5a6", "#9b59b6", "#f1c40f", "#2ecc71", "#3498db", "#95a5a6", "#9b59b6", "#f1c40f",
+            "#2ecc71", "#3498db", "#95a5a6", "#9b59b6", "#f1c40f", "#2ecc71", "#3498db", "#95a5a6", "#9b59b6", "#f1c40f",
+        ];
+
         $domGenderH = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getByGenreH();
         $domGenderF = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getByGenreF();
 
@@ -169,7 +174,7 @@ class BackController extends Controller
             'domGenderF' => $domGenderF,
             'jobGenderH' => $jobGenderH,
             'jobGenderF' => $jobGenderF,
-
+            'colors'     => $colors
         ));
     }
 }

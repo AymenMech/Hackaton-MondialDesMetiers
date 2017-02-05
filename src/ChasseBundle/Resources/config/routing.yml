@@ -10,3 +10,12 @@ chasse_front:
 chasse_back:
     resource: "@ChasseBundle/Resources/config/routing/back.yml"
     prefix:   /back
+
+search_job:
+    path:     /trouvetonjob
+    defaults: { _controller: ChasseBundle:SearchJob:search }
+
+
+get_data:
+    path:     /trouvetonjobdata
+    defaults: { _controller: ChasseBundle:SearchJob:data }

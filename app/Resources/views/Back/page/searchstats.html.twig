@@ -1,0 +1,233 @@
+{% extends ":Back:layout.html.twig" %}
+
+{% block main %}
+    <section class="container-fluid">
+        <div class="container">
+            <h1 class="back-title">Statistiques d'utilisation de l'application par sexe.</h1>
+        </div>
+    </section>
+
+    <section class="container-fluid">
+        <div class="container">
+            <h2>Classement des 20 domaines les plus répondus par Femme</h2>
+            <hr class="back-hr">
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Domaines</th>
+                    <th>Nombre de réponses</th>
+                </tr>
+                </thead>
+                {% for domGenderFs in domGenderF %}
+                    <tr>
+                        <td>{{ domGenderFs.domain }}</td>
+                        <td>{{ domGenderFs.total }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-xs-12 col-sm-6 job-canvas"><canvas id="myChart"></canvas></div>
+    </section>
+
+    <section class="container-fluid">
+        <div class="container">
+            <h2>Classement des 20 domaines les plus répondus par homme</h2>
+            <hr class="back-hr">
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Domaines</th>
+                    <th>Nombre de réponses</th>
+                </tr>
+                </thead>
+                {% for domGenderHs in domGenderH %}
+                    <tr>
+                        <td>{{ domGenderHs.domain }}</td>
+                        <td>{{ domGenderHs.total }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-xs-12 col-sm-6 job-canvas"><canvas id="myChart2"></canvas></div>
+    </section>
+
+    <section class="container-fluid">
+        <div class="container">
+            <h2>Classement des 20 métiers les plus tagués par Femme</h2>
+            <hr class="back-hr">
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Métier</th>
+                    <th>Nombre de réponses</th>
+                </tr>
+                </thead>
+                {% for jobGenderFs in jobGenderF %}
+                    <tr>
+                        <td>{{ jobGenderFs.name }}</td>
+                        <td>{{ jobGenderFs.total }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-xs-12 col-sm-6 job-canvas"><canvas id="myChart3"></canvas></div>
+    </section>
+
+    <section class="container-fluid">
+        <div class="container">
+            <h2>Classement des 20 métiers les plus tagués par Homme</h2>
+            <hr class="back-hr">
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Métier</th>
+                    <th>Nombre de réponses</th>
+                </tr>
+                </thead>
+                {% for jobGenderHs in jobGenderH %}
+                    <tr>
+                        <td>{{ jobGenderHs.name }}</td>
+                        <td>{{ jobGenderHs.total }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-xs-12 col-sm-6 job-canvas"><canvas id="myChart4"></canvas></div>
+    </section>
+
+    <script src="{{ asset('js/Chart.js') }}"></script>
+
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: { labels: ["Classement des 20 métiers les plus tagués par Homme"],
+                datasets: [
+                    {% set i = 0 %}
+
+                    {% for domGenderFs in domGenderF %}
+                    {
+                        label: '{{ domGenderFs.domain }}',
+                        data: [{{ domGenderFs.total }}],
+                        backgroundColor: [
+                            "{{ colors[i] }}"
+                        ]
+                    },
+                    {% set i = i + 1 %}
+                    {% endfor %}]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+
+    <script>
+        var ctx = document.getElementById('myChart2').getContext('2d');
+        var myChart2 = new Chart(ctx, {
+            type: 'bar',
+            data: { labels: ["Classement des 20 métiers les plus tagués par Homme"],
+                datasets: [
+                    {% set i = 0 %}
+
+                    {% for domGenderHs in domGenderH %}
+                    {
+                        label: '{{ domGenderHs.domain }}',
+                        data: [{{ domGenderHs.total }}],
+                        backgroundColor: [
+                            "{{ colors[i] }}"
+                        ]
+                    },
+                    {% set i = i + 1 %}
+                    {% endfor %}]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+
+
+    <script>
+        var ctx = document.getElementById('myChart3').getContext('2d');
+        var myChart4 = new Chart(ctx, {
+            type: 'bar',
+            data: { labels: ["Classement des 20 métiers les plus tagués par Homme"],
+                datasets: [
+                    {% set i = 0 %}
+
+                    {% for jobGenderFs in jobGenderF %}
+                    {
+                        label: '{{ jobGenderFs.name }}',
+                        data: [{{ jobGenderFs.total }}],
+                        backgroundColor: [
+                            "{{ colors[i] }}"
+                        ]
+                    },
+                    {% set i = i + 1 %}
+                    {% endfor %}]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+
+    <script>
+        var ctx = document.getElementById('myChart4').getContext('2d');
+        var myChart4 = new Chart(ctx, {
+            type: 'bar',
+            data: { labels: ["Classement des 20 métiers les plus tagués par Homme"],
+                datasets: [
+                    {% set i = 0 %}
+
+                    {% for jobGenderHs in jobGenderH %}
+                    {
+                        label: '{{ jobGenderHs.name }}',
+                        data: [{{ jobGenderHs.total }}],
+                        backgroundColor: [
+                            "{{ colors[i] }}"
+                        ]
+                    },
+                    {% set i = i + 1 %}
+                    {% endfor %}]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+
+{% endblock %}

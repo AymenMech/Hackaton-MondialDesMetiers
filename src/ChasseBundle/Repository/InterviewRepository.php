@@ -39,7 +39,7 @@ class InterviewRepository extends EntityRepository
         return $qb->getSingleScalarResult();
     }
 
-    public function get20jobs() { // function that returns the 20 most asnwered jobs
+    public function get20jobs() { // function that returns the 20 most answered jobs
         $qb = $this->createQueryBuilder('i')
             ->select('i.id as id', 'j.name as name', 'count(i.id) as total')
             //->innerJoin( 'i', 'Job', 'j', 'j.id = i.job')
@@ -53,7 +53,7 @@ class InterviewRepository extends EntityRepository
 
     }
 
-    public function get20domains() { //  function that returns the 20 most asnwered domains
+    public function get20domains() { //  function that returns the 20 most answered domains
         $qb = $this->createQueryBuilder('i')
             ->select('i', 'j.domain as domain', 'count(i.id) as total')
             ->innerJoin( 'i.job', 'j')
@@ -100,5 +100,102 @@ class InterviewRepository extends EntityRepository
 
         return $qb->getScalarResult();
     }
+
+    public function getByGenreH()
+    {
+        $qb = $this->createQueryBuilder('i')
+            ->select('i', 'j.domain as domain', 'count(i.id) as total')
+            ->innerJoin( 'i.job', 'j')
+            ->where('u.gender = :data')
+            ->setParameter('data', 'H')
+            ->innerJoin('i.user', 'u')
+            ->groupBy('j.domain')
+            ->orderBy('total', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery();
+
+        return $qb->getResult();
+    }
+
+    public function getByGenreF()
+    {
+        $qb = $this->createQueryBuilder('i')
+            ->select('i', 'j.domain as domain', 'count(i.id) as total')
+            ->innerJoin( 'i.job', 'j')
+            ->where('u.gender = :data')
+            ->setParameter('data', 'F')
+            ->innerJoin('i.user', 'u')
+            ->groupBy('j.domain')
+            ->orderBy('total', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery();
+
+        return $qb->getResult();
+    }
+
+    public function getJobByGenreH()
+    {
+        $qb = $this->createQueryBuilder('i')
+            ->select('i', 'j.name as name', 'count(i.id) as total')
+            ->innerJoin( 'i.job', 'j')
+            ->where('u.gender = :data')
+            ->setParameter('data', 'H')
+            ->innerJoin('i.user', 'u')
+            ->groupBy('j.name')
+            ->orderBy('total', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery();
+
+        return $qb->getResult();
+    }
+
+    public function getJobByGenreF()
+    {
+        $qb = $this->createQueryBuilder('i')
+            ->select('i', 'j.name as name', 'count(i.id) as total')
+            ->innerJoin( 'i.job', 'j')
+            ->where('u.gender = :data')
+            ->setParameter('data', 'F')
+            ->innerJoin('i.user', 'u')
+            ->groupBy('j.name')
+            ->orderBy('total', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery();
+
+        return $qb->getResult();
+    }
+
+    public function getTagByGenreH()
+    {
+        $qb = $this->createQueryBuilder('interview_repository')
+            ->select('i', 'j.name as name', 'count(i.id) as total')
+            ->innerJoin( 'i.job', 'j')
+            ->where('u.gender = :data')
+            ->setParameter('data', 'H')
+            ->innerJoin('i.user', 'u')
+            ->groupBy('j.name')
+            ->orderBy('total', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery();
+
+        return $qb->getResult();
+    }
+
+    public function getTagByGenreF()
+    {
+        $qb = $this->createQueryBuilder('i')
+            ->select('i', 'j.name as name', 'count(i.id) as total')
+            ->innerJoin( 'i.job', 'j')
+            ->where('u.gender = :data')
+            ->setParameter('data', 'F')
+            ->innerJoin('i.user', 'u')
+            ->groupBy('j.name')
+            ->orderBy('total', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery();
+
+        return $qb->getResult();
+    }
+
 
 }

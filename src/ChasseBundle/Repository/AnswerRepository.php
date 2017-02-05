@@ -48,5 +48,6 @@ class AnswerRepository extends EntityRepository
         return $qb->getResult();
 
     }
+
 }
 

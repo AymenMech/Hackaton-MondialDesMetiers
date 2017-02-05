@@ -81,5 +81,11 @@ td {
 /** Canvas CSS **/
 
 .job-canvas {
-    margin-top: 250px;
+    margin-top: 200px;
+}
+#myChart,
+#myChart2,
+#myChart3,
+#myChart4 {
+    height: 500px;
 }

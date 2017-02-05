@@ -27,15 +27,25 @@ class SearchJobController extends Controller
 
 
         if ($form->isSubmitted() && $form->isValid()) {
-          $data =  $form->getData()['answers'];
-        $tagsId = array();
-          foreach($data as $tag){
-              $tagsId[] = $tag->getId();
-          }
-       //   var_dump($tagsId);
-          //  $em = $this->getDoctrine()->getRepository('SearchRepository');
-           // return $this->redirectToRoute('votevalid');
+            $data =  $form->getData()['answers'];
+            $jobs = array();
+            /** @var Answer $tag */
+            foreach($data as $tag){
+                /** @var Interview $interview */
+                foreach ($tag->getInterviews() as $interview) {
+                    $jobName = $interview->getJob()->getName();
+                    $jobs[] = $jobName;
+                }
 
+                }
+                $jobs = array_count_values($jobs);
+                arsort($jobs,SORT_NATURAL | SORT_FLAG_CASE);
+
+          // $em = $this->getDoctrine()->getRepository('SearchRepository');
+            return $this->render('interview/searchjob.html.twig', array(
+                'jobs' => $jobs,
+                'form' => $form->createView(),
+            ));
         }
 
         return $this->render('interview/searchjob.html.twig', array(

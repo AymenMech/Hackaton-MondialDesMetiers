@@ -148,9 +148,14 @@ class BackController extends Controller
         $domGenderH = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getByGenreH();
         $domGenderF = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getByGenreF();
 
+        $jobGenderH = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getJobByGenreH();
+        $jobGenderF = $this->getDoctrine()->getRepository('ChasseBundle:Interview')->getJobByGenreF();
         return $this->render(':Back/page:searchstats.html.twig', array(
             'domGenderH' => $domGenderH,
-            'domGenderF' => $domGenderF
+            'domGenderF' => $domGenderF,
+            'jobGenderH' => $jobGenderH,
+            'jobGenderF' => $jobGenderF
+
         ));
     }
 }

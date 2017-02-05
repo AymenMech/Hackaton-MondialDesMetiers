@@ -9,5 +9,13 @@
     {% for domGenderFs in domGenderF %}
         <p>{{ domGenderFs.domain }} : {{ domGenderFs.total }}</p>
     {% endfor %}
+    <h1>20 job les + tagés homme</h1>
+    {% for jobGenderHs in jobGenderH %}
+        <p>{{ jobGenderHs.name }} : {{ jobGenderHs.total }}</p>
+    {% endfor %}
+    <h1>20 job les + tagés femme</h1>
+    {% for jobGenderFs in jobGenderF %}
+        <p>{{ jobGenderFs.name }} : {{ jobGenderFs.total }}</p>
+    {% endfor %}
 
 {% endblock %}
